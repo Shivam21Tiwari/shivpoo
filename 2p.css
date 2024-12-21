@@ -1,0 +1,143 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+}
+
+.envelope {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background: linear-gradient(145deg, #e50c9dad, #12fbffc1);
+    border: 2px solid #20c511;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 6px 10px rgba(13, 12, 12, 0.922);
+    overflow: hidden;
+}
+
+.envelope::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 150px 100px 150px;
+    border-color: transparent transparent #19d215 transparent;
+    top: -100px;
+    left: 0;
+    transition: top 0.5s ease;
+    z-index: 2;
+    box-shadow: 0 4px 6px rgba(37, 36, 36, 0.591);
+}
+
+.envelope.open::before {
+    top: -60px;
+}
+
+.envelope::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 100px 150px 0 150px;
+    border-color: #e9e51190 transparent transparent transparent;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.envelope-text {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    padding: 10%;
+    transform: translate(-50%, -50%);
+    font-size: 1.4em;
+    color: #030303;
+    text-align: center;
+    transition: opacity 0.5s ease;
+}
+
+.letter {
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    width: 300px;
+    height: 230px;
+    background: #34d80f;
+    border-radius: 3px;
+    box-shadow: 0 4px 6px rgb(222, 115, 9);
+    transform: translateY(100%);
+    transition: transform 0.5s ease;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+
+.envelope.open .letter {
+    transform: translateY(-40px);
+}
+
+.envelope.open .envelope-text {
+    opacity: 0;
+}
+
+.letter-content {
+    padding: 10px;
+    text-align: center;
+    color: #050404dd;
+    font-size: 0.67em;
+    font-family: 'Georgia', serif;
+}
+
+.heart {
+    color: #ff4081;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.response {
+    display: inline;
+    flex-direction: column;
+    align-items: center;
+}
+
+.response p {
+    font-size: 1.5em;
+}
+
+.response button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+/* Emoji Container Inside the Envelope */
+#emoji-container {
+    position: absolute;
+    bottom: 20px;
+    /* Adjust position within the envelope */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 2em;
+    /* Adjust emoji size */
+    color: #f71111;
+    display: none;
+    /* Initially hidden */
+}
+
+#emoji-container.show {
+    display: block;
+    /* Show when "show" class is added */
+}
